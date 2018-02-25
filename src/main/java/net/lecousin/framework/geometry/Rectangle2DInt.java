@@ -113,40 +113,6 @@ public class Rectangle2DInt {
 		return new Rectangle2DInt(pos, size);
 	}
 	
-	/** return the intersection points between this rectangle and the given one or null if both are equals:
-	 * it may return 0 to 2 points (1 point being the case where only one of their corner is common). */
-	public Point2DInt[] getIntersectionPoints(Rectangle2DInt r) {
-		if (r.equals(this)) return null;
-		if (contains(r)) return new Point2DInt[0];
-		if (r.contains(this)) return new Point2DInt[0];
-		Rectangle2DInt left;
-		Rectangle2DInt right;
-		if (position.x < r.position.x) {
-			left = this;
-			right = r;
-		} else {
-			left = r;
-			right = this;
-		}
-		if (right.position.x > left.position.x + left.size.x) return new Point2DInt[0];
-		Rectangle2DInt top;
-		Rectangle2DInt bottom;
-		if (position.y < r.position.y) {
-			top = this;
-			bottom = r;
-		} else {
-			top = r;
-			bottom = this;
-		}
-		if (bottom.position.y > top.position.y + top.size.y) return new Point2DInt[0];
-		if (left.position.x + left.size.x == right.position.x && top.position.y + top.size.y == bottom.position.y) 
-			return new Point2DInt[] { new Point2DInt(left.position.x + left.size.x, top.position.y + top.size.y) };
-		return new Point2DInt[] {
-			new Point2DInt(right.position.x, top.position.y + top.size.y),
-			new Point2DInt(left.position.x + left.size.x, bottom.position.y)
-		};
-	}
-	
 	/** Extand this rectangle so it can contain the given rectangle. */
 	public void extendToContain(Rectangle2DInt r) {
 		if (contains(r)) return;

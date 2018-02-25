@@ -77,10 +77,21 @@ public class Line2DInt {
 			double lmax = Math.max(line.p1.x, line.p2.x);
 			return (p1.x > lmin && p1.x < lmax) || (p2.x > lmin && p2.x < lmax);
 		}
-		if (!isOnAbsolute(line)) return false;
-		Point2DInt[] i = getRectangle().getIntersectionPoints(line.getRectangle());
-		if (i != null && i.length == 1) return false; // a single point
-		return true;
+		// check they are on the same infinite line
+		double[] temp = getEquation();
+		double a1 = temp[0];
+		double b1 = temp[1];
+
+		temp = line.getEquation();
+		double a2 = temp[0];
+		double b2 = temp[1];
+
+		double det = a1 * b2 - b1 * a2;
+		if (det != 0) return false;
+		// check if they have a part in common
+		Rectangle2DInt r = getRectangle().getIntersection(line.getRectangle());
+		if (r == null) return false;
+		return r.size.x > 1 && r.size.y > 1;
 	}
 	
 	/** return true if this line is on the given line considering the two lines as infinite. */
