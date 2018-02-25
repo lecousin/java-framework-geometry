@@ -36,7 +36,7 @@ public class Line2DInt {
 	/** return true if the point is on the line considering the line as infinite. */
 	public boolean containsAbsolute(Point2DInt point, int tolerance) {
 		double[] eq = getEquation();
-		return Math.abs(eq[0] * point.x + eq[1] * point.y - eq[2]) < tolerance;
+		return Math.abs(eq[0] * point.x + eq[1] * point.y - eq[2]) <= tolerance;
 	}
 	
 	/** return the intersection point of the lines considering the lines as infinite, or null if they are on the same alignement. */
@@ -168,6 +168,18 @@ public class Line2DInt {
 		Point2DInt[] result = new Point2DInt[i];
 		while (i > 0) result[--i] = pts[i];
 		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Line2DInt)) return false;
+		Line2DInt l = (Line2DInt)obj;
+		return l.p1.equals(p1) && l.p2.equals(p2);
+	}
+	
+	@Override
+	public int hashCode() {
+		return p1.hashCode() + p2.hashCode() * 1000;
 	}
 	
 	@Override

@@ -3,12 +3,9 @@ package net.lecousin.framework.geometry;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 /**
  * Path in 2-dimension.
  */
-@SuppressFBWarnings("URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD")
 public class Path2D {
 
 	/** Constructor. */

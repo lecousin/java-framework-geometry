@@ -12,9 +12,48 @@
   
   <dependencies>
   	<dependency>
-  		<groupId>net.lecousin</groupId>
-  		<artifactId>core</artifactId>
-  		<version>0.10.0</version>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.12</version>
+  		<scope>test</scope>
   	</dependency>
   </dependencies>
+  
+  <licenses>
+    <license>
+      <name>Apache 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+    
+  <developers>
+    <developer>
+    	<id>lecousin</id>
+    	<name>Guillaume Le Cousin</name>
+    </developer>
+  </developers>
+  
+  <scm>
+    <connection>scm:git:https://github.com/lecousin/java-framework-geometry.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:lecousin/java-framework-geometry.git</developerConnection>
+    <url>https://github.com/lecousin/java-framework-geometry</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
 </project>
