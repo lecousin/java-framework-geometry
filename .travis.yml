@@ -1,12 +1,16 @@
 language: java
+jdk:
+  - oraclejdk8
+  - openjdk8
+dist: trusty
 
-script: mvn test verify -B
+addons:
+  sonarcloud:
+    organization: "lecousin"
+    token:
+      secure: IB0bJCpwFODbd0wZCsrT4mJjSJUt2Zk47ZeDvd8BhtDVvhxl9hDAOPa0UkJQKRqID3qz5Q76JjORAkczXL/Vx63RPApC4kra0ZMW6OWbvDsZugZnU+dv64ZYAQfTEfobICyR2U0PtxkmexhBnfMY56xWAoJelo75VdaUNzrPxvAmwfl+JBy6EnDrHyt5Pdy3Hju7QikwDE2PG5Rk3WKTf8NN7hefuxq9GDMC0qgHrNOcAReo+rPgh23f+gbByGvodFqEGV9nPT4bSzslMDSm2CBgX2QPXUx0oM3MqhPJ22kYAT8ICIyWNJ/Bx8PxtNcoNQU3qSQoUtXc7VD3wWhGPU4kFnwkYgYWae3/4g+eZ3dJ0rYVvL5jKIHTF5NoHT2i1C0HD9OdiB9+GIb71PRAKDfWd79YQva75KCRbqdOQKuH7QdKY0n4x/0ghMRRQmZNPlOtK1REFJ7p6hVQO5yiJEsltiOrUYST9TdWful2jTT+d1EAXSqT5RODYXkcQMCNaa08ZGjf6+uI9Jn31OaULZIJj0zxuyoZVxEnzKmKJZuAxPkD2nmjgbzd7Pw6bI6lCD87MyDGdTl5bzWmTnS26yyI0iOx5lpBKvG0iQjdTS9v3t0aDF+jQdwYM2pmmRFVWkf+6xIVfV2naD5ro/Mo4aYaCRGFdK6uDR+tEzlzrE8=
 
-after_script:
- - echo _____________CHECKSTYLE______________
- - cat */target/checkstyle-result.xml
- - echo _____________SOPTBUGS______________
- - cat */target/findbugsXml.xml
+script: mvn test verify install sonar:sonar -Dsonar.projectKey=lecousin_java-framework-geometry -B
 
 after_success:
  - bash <(curl -s https://codecov.io/bash)

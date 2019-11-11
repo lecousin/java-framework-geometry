@@ -13,8 +13,8 @@ Geometry utilities such as Point, Line, Rectangle, Path...
 ![build status](https://ci.appveyor.com/api/projects/status/github/lecousin/java-framework-geometry?branch=master&svg=true "Build Status")
 [![Codecov](https://codecov.io/gh/lecousin/java-framework-geometry/graph/badge.svg)](https://codecov.io/gh/lecousin/java-framework-geometry/branch/master)
 
-### Branch 0.1
+### Branch dev
 
-![build status](https://travis-ci.org/lecousin/java-framework-geometry.svg?branch=0.1 "Build Status")
-![build status](https://ci.appveyor.com/api/projects/status/github/lecousin/java-framework-geometry?branch=0.1&svg=true "Build Status")
-[![Codecov](https://codecov.io/gh/lecousin/java-framework-geometry/branch/0.1/graph/badge.svg)](https://codecov.io/gh/lecousin/java-framework-geometry/branch/0.1)
+![build status](https://travis-ci.org/lecousin/java-framework-geometry.svg?branch=dev "Build Status")
+![build status](https://ci.appveyor.com/api/projects/status/github/lecousin/java-framework-geometry?branch=dev&svg=true "Build Status")
+[![Codecov](https://codecov.io/gh/lecousin/java-framework-geometry/branch/dev/graph/badge.svg)](https://codecov.io/gh/lecousin/java-framework-geometry/branch/dev)
