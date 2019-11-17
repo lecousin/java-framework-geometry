@@ -102,6 +102,38 @@ public class TestLine2DInt {
 		line2 = new Line2DInt(new Point2DInt(20, 20), new Point2DInt(30, 30));
 		Assert.assertFalse(line2.isOn(line1));
 		Assert.assertFalse(line1.isOn(line2));
+		line2 = new Line2DInt(new Point2DInt(200, 200), new Point2DInt(300, 300));
+		Assert.assertFalse(line2.isOn(line1));
+		Assert.assertFalse(line1.isOn(line2));
+		line2 = new Line2DInt(new Point2DInt(12, 18), new Point2DInt(18, 12));
+		Assert.assertFalse(line2.isOn(line1));
+		Assert.assertFalse(line1.isOn(line2));
+		line2 = new Line2DInt(new Point2DInt(15, 15), new Point2DInt(15, 15));
+		Assert.assertFalse(line2.isOn(line1));
+		Assert.assertFalse(line1.isOn(line2));
+		line2 = new Line2DInt(new Point2DInt(8, 13), new Point2DInt(10, 11));
+		Assert.assertFalse(line2.isOn(line1));
+		Assert.assertFalse(line1.isOn(line2));
+		line2 = new Line2DInt(new Point2DInt(0, 0), new Point2DInt(10, 10));
+		Assert.assertFalse(line2.isOn(line1));
+		Assert.assertFalse(line1.isOn(line2));
+		line2 = new Line2DInt(new Point2DInt(0, 0), new Point2DInt(11, 11));
+		Assert.assertTrue(line2.isOn(line1));
+		Assert.assertTrue(line1.isOn(line2));
+		line1 = new Line2DInt(new Point2DInt(10, 10), new Point2DInt(20, 11));
+		line2 = new Line2DInt(new Point2DInt(1, 10), new Point2DInt(11, 11));
+		Assert.assertTrue(line2.isOn(line1));
+		Assert.assertTrue(line1.isOn(line2));
+		line2 = new Line2DInt(new Point2DInt(0, 10), new Point2DInt(10, 11));
+		Assert.assertFalse(line2.isOn(line1));
+		Assert.assertFalse(line1.isOn(line2));
+		line1 = new Line2DInt(new Point2DInt(10, 10), new Point2DInt(11, 20));
+		line2 = new Line2DInt(new Point2DInt(10, 1), new Point2DInt(11, 11));
+		Assert.assertTrue(line2.isOn(line1));
+		Assert.assertTrue(line1.isOn(line2));
+		line2 = new Line2DInt(new Point2DInt(10, 0), new Point2DInt(11, 10));
+		Assert.assertFalse(line2.isOn(line1));
+		Assert.assertFalse(line1.isOn(line2));
 		// isOnAbsolute
 		// - horiz
 		line1 = new Line2DInt(new Point2DInt(10, 100), new Point2DInt(22, 100));

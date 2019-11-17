@@ -1,6 +1,7 @@
 package net.lecousin.framework.geometry;
 
 /** Line between 2 Point2DInt. */
+@SuppressWarnings("squid:ClassVariableVisibilityCheck")
 public class Line2DInt {
 
 	/** Constructor. */
@@ -40,6 +41,7 @@ public class Line2DInt {
 	}
 	
 	/** return the intersection point of the lines considering the lines as infinite, or null if they are on the same alignement. */
+	@SuppressWarnings("squid:S1244") // comparison with zero is acceptable
 	public Point2DInt getAbsoluteIntersection(Line2DInt line) {
 		double[] temp = getEquation();
 		double a1 = temp[0];
@@ -62,6 +64,7 @@ public class Line2DInt {
 	public boolean isVertical() { return p1.x == p2.x; }
 	
 	/** return true if this line is on the given line. If they are only in contact with one of their terminal points, it return false. */
+	@SuppressWarnings("squid:S1244") // comparison with zero is acceptable
 	public boolean isOn(Line2DInt line) {
 		if (isVertical()) {
 			if (!line.isVertical()) return false;
@@ -95,6 +98,7 @@ public class Line2DInt {
 	}
 	
 	/** return true if this line is on the given line considering the two lines as infinite. */
+	@SuppressWarnings("squid:S1244") // comparison with zero is acceptable
 	public boolean isOnAbsolute(Line2DInt line) {
 		if (isVertical()) return line.isVertical() && p1.x == line.p1.x;
 		if (isHorizontal()) return line.isHorizontal() && p1.y == line.p1.y;
@@ -142,7 +146,9 @@ public class Line2DInt {
 	/** return the intersection point between this line and the given one, or null if there is no intersection or they are the same. */
 	public Point2DInt getIntersection(Line2DInt line) {
 		Point2DInt pt = getAbsoluteIntersection(line);
-		return pt == null ? null : getRectangle().contains(pt) && line.getRectangle().contains(pt) ? pt : null;
+		if (pt == null || !getRectangle().contains(pt) || !line.getRectangle().contains(pt))
+			return null;
+		return pt;
 	}
 	
 	/** return the intersection points between this line and the given rectangle: it may returns 0 to 2 points,
@@ -159,26 +165,24 @@ public class Line2DInt {
 		Point2DInt p = getIntersection(line1);
 		if (p != null) pts[i++] = p;
 		p = getIntersection(line2);
-		if (p != null) {
-			boolean found = false;
-			for (int j = 0; j < i && !found; ++j) if (pts[j].equals(p)) found = true; 
-			if (!found) pts[i++] = p;
-		}
+		if (p != null && !search(i, pts, p))
+			pts[i++] = p;
 		p = getIntersection(line3);
-		if (p != null) {
-			boolean found = false;
-			for (int j = 0; j < i && !found; ++j) if (pts[j].equals(p)) found = true; 
-			if (!found) pts[i++] = p;
-		}
+		if (p != null && !search(i, pts, p))
+			pts[i++] = p;
 		p = getIntersection(line4);
-		if (p != null) {
-			boolean found = false;
-			for (int j = 0; j < i && !found; ++j) if (pts[j].equals(p)) found = true; 
-			if (!found) pts[i++] = p;
-		}
+		if (p != null && !search(i, pts, p))
+			pts[i++] = p;
 		Point2DInt[] result = new Point2DInt[i];
 		while (i > 0) result[--i] = pts[i];
 		return result;
+	}
+	
+	private static boolean search(int i, Point2DInt[] pts, Point2DInt p) {
+		for (int j = 0; j < i; ++j)
+			if (pts[j].equals(p))
+				return true;
+		return false;
 	}
 	
 	@Override

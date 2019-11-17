@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * Path in 2-dimension.
  */
+@SuppressWarnings("squid:ClassVariableVisibilityCheck")
 public class Path2D {
 
 	/** Constructor. */

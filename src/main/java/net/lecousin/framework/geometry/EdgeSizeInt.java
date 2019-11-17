@@ -3,6 +3,7 @@ package net.lecousin.framework.geometry;
 /**
  * Rectangle region edges' size.
  */
+@SuppressWarnings("squid:ClassVariableVisibilityCheck")
 public class EdgeSizeInt {
 
 	/** Constructor. */

@@ -11,6 +11,7 @@ public class MultipleRectangle2DInt {
 
 	/** Constructor. */
 	public MultipleRectangle2DInt() {
+		// nothing
 	}
 	
 	private LinkedList<Rectangle2DInt> rectangles = new LinkedList<>();

@@ -1,6 +1,7 @@
 package net.lecousin.framework.geometry;
 
 /** A point in 2-dimension, with x and y as integers. */
+@SuppressWarnings("squid:ClassVariableVisibilityCheck")
 public class Point2DInt {
 
 	/** Constructor. */
@@ -36,7 +37,7 @@ public class Point2DInt {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null || !(obj instanceof Point2DInt)) return false;
+		if (!(obj instanceof Point2DInt)) return false;
 		Point2DInt c = (Point2DInt)obj;
 		return x == c.x && y == c.y;
 	}
